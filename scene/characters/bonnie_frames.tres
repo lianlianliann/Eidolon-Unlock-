@@ -166,7 +166,15 @@ animations = [{
 }],
 "loop": false,
 "name": &"fall",
-"speed": 24.0
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvl01")
+}],
+"loop": false,
+"name": &"hang",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,

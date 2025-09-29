@@ -8,7 +8,7 @@ func _process(_delta: float) -> void:
 	player.direction = Input.get_vector(actions.left, actions.right, actions.up, actions.down)
 
 func _unhandled_input(event: InputEvent) -> void:
-	player.run = Input.is_action_pressed("run")
+	player.run = Input.is_action_pressed(actions.run)
 
-	if Input.is_action_pressed("jump"):
+	if Input.is_action_just_pressed(actions.jump):
 		player.try_jump()

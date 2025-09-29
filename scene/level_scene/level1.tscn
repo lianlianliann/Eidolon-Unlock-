@@ -165,6 +165,7 @@ position = Vector2(-1635, -734)
 motion_mirroring = Vector2(1920, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Backdrop"]
+position = Vector2(-51, 6)
 texture = ExtResource("3_1ue5w")
 centered = false
 

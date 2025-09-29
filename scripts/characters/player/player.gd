@@ -2,14 +2,13 @@ class_name Player
 extends PlatformerCharacter2D
 
 @export var idle_timer : Timer
-@export_range(0, 300, 0.2, "or_greater") var walk_speed : float = 75.0
-@export_range(0, 300, 0.2, "or_greater") var run_speed : float = 150.0
-@export_range(0, 300, 0.2, "or_greater") var jump_force : float = 250.0
+@export_range(0, 300, 0.2, "or_greater") var walk_speed : float = 100.0
+@export_range(0, 300, 0.2, "or_greater") var run_speed : float = 200.0
+@export_range(0, 300, 0.2, "or_greater") var jump_force : float = 300.0
 var run : bool = false
 
 func _ready():
-	animated_sprite.play(animations.idle_1)
-	idle_timer.start()
+	animated_sprite.play(animations.idle_2)
 
 func _physics_process(delta: float) -> void:
 	var move_speed = run_speed if run else walk_speed
@@ -21,6 +20,9 @@ func _physics_process(delta: float) -> void:
 
 func process_animations() -> void:
 	if not is_on_floor():
+		if current_animation() != animations.fall and current_animation() != animations.jump:
+			play_animation(animations.fall)
+
 		return
 
 	if abs(direction.x) > 0.0:
@@ -60,3 +62,10 @@ func _jump() -> void:
 	velocity.y -= jump_force
 	stop_animation()
 	play_animation(animations.jump)
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if current_animation() == animations.jump:
+		play_animation(animations.fall)
+
+
