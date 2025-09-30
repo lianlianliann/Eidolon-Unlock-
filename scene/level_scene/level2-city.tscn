@@ -1,9 +1,9 @@
-[gd_scene load_steps=54 format=3 uid="uid://ca4piba87hldo"]
+[gd_scene load_steps=61 format=3 uid="uid://ca4piba87hldo"]
 
 [ext_resource type="Texture2D" uid="uid://cjs1epnqus5w5" path="res://assets/platforms/level2/lvl2_p1_city.png" id="1_caiio"]
 [ext_resource type="Script" uid="uid://dovly1rei0j8n" path="res://scripts/level_scene.gd" id="1_me6ov"]
 [ext_resource type="PackedScene" uid="uid://ciurmjgcl7fvc" path="res://scene/characters/bonnie.tscn" id="2_fmdep"]
-[ext_resource type="Script" uid="uid://cpsykfmg3q4o0" path="res://scripts/characters/player/player_input.gd" id="3_fol5c"]
+[ext_resource type="Script" uid="uid://bk8relen5afv3" path="res://scripts/characters/player/player_input.gd" id="3_fol5c"]
 [ext_resource type="Resource" uid="uid://d2c63rwnti8m7" path="res://scene/characters/player_input_actions.tres" id="4_me6ov"]
 [ext_resource type="Texture2D" uid="uid://dw1a42vsschyc" path="res://assets/background/roof/eidlon.png" id="5_t4j2k"]
 [ext_resource type="Texture2D" uid="uid://c6rl6r6wjswa3" path="res://assets/background/street/6.png" id="6_70tv6"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://bqomhgu5tjoqo" path="res://scene/transition_screen.tscn" id="10_t4j2k"]
 [ext_resource type="PackedScene" uid="uid://djy8wyqpxxswa" path="res://scene/killzone.tscn" id="11_70tv6"]
 [ext_resource type="PackedScene" uid="uid://ckfc7r8o6smuy" path="res://scene/bg_sound.tscn" id="12_t4j2k"]
+[ext_resource type="AudioStream" uid="uid://dk3ex1n2tv2cf" path="res://assets/sounds/oknotokbonnie.wav" id="13_70tv6"]
+[ext_resource type="PackedScene" uid="uid://cckds7drxy0dw" path="res://scene/pushable_box.tscn" id="14_rj6jh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubbsg"]
 size = Vector2(1017.5, 30)
@@ -71,6 +73,10 @@ b = Vector2(59, 21)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_cpqhx"]
 a = Vector2(24, 23)
 b = Vector2(84, -4)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_20sm1"]
+a = Vector2(24, 24)
+b = Vector2(52, 54)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_3db2q"]
 a = Vector2(13, 7)
@@ -262,6 +268,12 @@ shape = SubResource("SegmentShape2D_rj6jh")
 [node name="CollisionShape2D24" type="CollisionShape2D" parent="part1_collision"]
 position = Vector2(-289, 40)
 shape = SubResource("SegmentShape2D_cpqhx")
+
+[node name="CollisionShape2D33" type="CollisionShape2D" parent="part1_collision"]
+position = Vector2(-228, 76)
+rotation = 2.9077806
+shape = SubResource("SegmentShape2D_20sm1")
+one_way_collision = true
 
 [node name="CollisionShape2D20" type="CollisionShape2D" parent="part1_collision"]
 position = Vector2(-386, 69)
@@ -480,6 +492,7 @@ remote_path = NodePath("../../Camera2D2")
 
 [node name="PlayerInput2" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("3_fol5c")
+other_scene = &"res://scene/level_scene/level2-forest.tscn"
 player = NodePath("../Bonnie2")
 actions = ExtResource("4_me6ov")
 
@@ -499,3 +512,13 @@ spawn_point = NodePath("../SpawnPoint")
 position = Vector2(-240, -22)
 
 [node name="BgSound" parent="." instance=ExtResource("12_t4j2k")]
+stream = ExtResource("13_70tv6")
+
+[node name="PushableBox" parent="." instance=ExtResource("14_rj6jh")]
+position = Vector2(196, -146)
+
+[node name="PushableBox2" parent="." instance=ExtResource("14_rj6jh")]
+position = Vector2(498, -54)
+
+[node name="PushableBox3" parent="." instance=ExtResource("14_rj6jh")]
+position = Vector2(1988, -152)

@@ -1,8 +1,5 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckfc7r8o6smuy"]
-
-[ext_resource type="AudioStream" uid="uid://dk3ex1n2tv2cf" path="res://assets/sounds/oknotokbonnie.wav" id="1_shkfp"]
+[gd_scene format=3 uid="uid://ckfc7r8o6smuy"]
 
 [node name="BgSound" type="AudioStreamPlayer"]
-stream = ExtResource("1_shkfp")
 volume_db = -30.0
 autoplay = true

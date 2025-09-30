@@ -20,6 +20,10 @@ func _ready():
 	if spawn_point and spawn_at_start:
 		global_position = spawn_point.global_position
 
+	if GameState.changed_scene:
+		global_position = GameState.player_position
+		GameState.changed_scene = false
+	
 	_get_remote_transform().remote_path = camera.get_path()
 	animated_sprite.play(animations.idle_2)
 
@@ -85,6 +89,7 @@ func _detach_from_zipline() -> void:
 	reparent(get_tree().root.get_child(0))
 	_get_remote_transform().remote_path = camera.get_path()
 	global_rotation = 0
+	global_position.x += 20.0
 
 func _process_pushable_objects(move_speed : float) -> void:
 	var object = raycast.get_collider()

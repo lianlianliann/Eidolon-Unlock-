@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://2q41fgk1fm2h"]
+
+[ext_resource type="Texture2D" uid="uid://dnj1tjta6ippc" path="res://assets/chat_bubbles/small_chat_bubble.png" id="1_gbrbg"]
+
+[node name="SmallChatBubble" type="Node2D"]
+
+[node name="MainChatBubble" type="Sprite2D" parent="."]
+position = Vector2(0, 1.9073486e-06)
+scale = Vector2(0.22429895, 0.22429906)
+texture = ExtResource("1_gbrbg")

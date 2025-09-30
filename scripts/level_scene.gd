@@ -2,7 +2,7 @@ extends Node2D
 
 @export var player : Player
 @export var transition_screen : TransitionScreen
-@export var next_level_scene : PackedScene
+@export var next_level_scene : StringName
 @export var zipline : Path2D
 
 func _on_ladders_body_entered(_body: Node2D) -> void:
@@ -14,6 +14,7 @@ func _on_ladders_body_exited(_body: Node2D) -> void:
 func _on_zipline_area_body_entered(_body: Node2D) -> void:
 	var point = zipline.get_child(0)
 	if point is PathFollow2D and point.progress_ratio == 1.0:
+		point.progress_ratio = 0.0
 		return
 
 	var path_points = zipline.curve.get_baked_points()
@@ -36,5 +37,8 @@ func _on_finish_line_body_entered(body: Node2D) -> void:
 	body.set_physics_process(false)
 	transition_screen.transition()
 	await transition_screen.finished
-	get_tree().change_scene_to_packed(next_level_scene)
+
+	GameState.player_position = Vector2(0, 0)
+	GameState.changed_scene = false
+	get_tree().change_scene_to_file(next_level_scene)
 

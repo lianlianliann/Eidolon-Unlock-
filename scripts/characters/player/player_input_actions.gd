@@ -8,3 +8,4 @@ extends Resource
 @export var run: StringName  = "run"
 @export var jump: StringName  = "jump"
 @export var interact: StringName = "interact"
+@export var transform: StringName = "transform"

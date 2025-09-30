@@ -6,7 +6,6 @@ extends Area2D
 @export var spawn_point : Marker2D
 
 func _on_body_entered(_body: Node2D) -> void:
-	print("You Died!")
 	_body.set_physics_process(false)
 	transition_screen.transition()
 	await transition_screen.finished
