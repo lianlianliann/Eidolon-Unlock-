@@ -1,6 +1,6 @@
-[gd_scene load_steps=60 format=3 uid="uid://ca4piba87hldo"]
+[gd_scene load_steps=54 format=3 uid="uid://ca4piba87hldo"]
 
-[ext_resource type="Texture2D" uid="uid://3y5ath6wlb35" path="res://assets/platforms/level2/lv2_p1_city.png" id="1_caiio"]
+[ext_resource type="Texture2D" uid="uid://cjs1epnqus5w5" path="res://assets/platforms/level2/lvl2_p1_city.png" id="1_caiio"]
 [ext_resource type="Script" uid="uid://dovly1rei0j8n" path="res://scripts/level_scene.gd" id="1_me6ov"]
 [ext_resource type="PackedScene" uid="uid://ciurmjgcl7fvc" path="res://scene/characters/bonnie.tscn" id="2_fmdep"]
 [ext_resource type="Script" uid="uid://cpsykfmg3q4o0" path="res://scripts/characters/player/player_input.gd" id="3_fol5c"]
