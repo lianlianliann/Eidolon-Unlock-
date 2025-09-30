@@ -38,8 +38,19 @@ func _physics_process(delta: float) -> void:
 		velocity.y = direction.y * walk_speed
 
 	move_and_slide()
+	_process_one_way_collisions()
 	_process_pushable_objects(move_speed)
 	_process_animations()
+
+func _process_one_way_collisions():
+	if direction.y <= 0:
+		return
+
+	if get_slide_collision_count() > 0:
+		for i in range(get_slide_collision_count()):
+			var shape = get_slide_collision(i).get_collider_shape()
+			if shape and shape.one_way_collision:
+				position.y += 1
 
 func _try_zipline(delta: float) -> bool:
 	if not zipline:

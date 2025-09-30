@@ -180,25 +180,25 @@ size = Vector2(8, 136)
 size = Vector2(8, 75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_541h4"]
-size = Vector2(6.5, 1)
+size = Vector2(7.5, 3.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3d3u"]
-size = Vector2(10, 1)
+size = Vector2(10, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldfgt"]
-size = Vector2(7.5, 1)
+size = Vector2(7.5, 3.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0frn7"]
-size = Vector2(7.5, 1)
+size = Vector2(7.75, 2.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndvtf"]
-size = Vector2(7.5, 1)
+size = Vector2(7.5, 1.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kk0l2"]
-size = Vector2(7.5, 1)
+size = Vector2(7.5, 2.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d811u"]
-size = Vector2(7.5, 1)
+size = Vector2(7.5, 3.5)
 
 [sub_resource type="Curve2D" id="Curve2D_jw1ra"]
 _data = {
@@ -580,48 +580,43 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadderPlatforms"]
+position = Vector2(0, -0.75)
 shape = SubResource("RectangleShape2D_541h4")
 one_way_collision = true
 debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="LadderPlatforms"]
-position = Vector2(117.25, -12)
+position = Vector2(117.25, -13)
 shape = SubResource("RectangleShape2D_e3d3u")
 one_way_collision = true
 debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="LadderPlatforms"]
-position = Vector2(333, 24.5)
+position = Vector2(333, 23.25)
 shape = SubResource("RectangleShape2D_ldfgt")
 one_way_collision = true
 debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="LadderPlatforms"]
-position = Vector2(1012.25, -16.5)
-shape = SubResource("RectangleShape2D_0frn7")
-one_way_collision = true
-debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="LadderPlatforms"]
-position = Vector2(1012.25, -16.5)
+position = Vector2(1012.375, -17.25)
 shape = SubResource("RectangleShape2D_0frn7")
 one_way_collision = true
 debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="LadderPlatforms"]
-position = Vector2(1450.25, -55.5)
+position = Vector2(1450.25, -55.75)
 shape = SubResource("RectangleShape2D_ndvtf")
 one_way_collision = true
 debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="LadderPlatforms"]
-position = Vector2(2362.25, 49.5)
+position = Vector2(2362.25, 48.75)
 shape = SubResource("RectangleShape2D_kk0l2")
 one_way_collision = true
 debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="LadderPlatforms"]
-position = Vector2(2840.25, 64.5)
+position = Vector2(2840.25, 63.25)
 shape = SubResource("RectangleShape2D_d811u")
 one_way_collision = true
 debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
@@ -632,7 +627,7 @@ player = NodePath("../Zipline/ZiplinePoint/Bonnie")
 actions = ExtResource("9_1k30x")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-684, -145.00012)
+position = Vector2(-684, -143.99988)
 zoom = Vector2(3, 3)
 
 [node name="PushableBox" parent="." instance=ExtResource("10_jw1ra")]
@@ -659,7 +654,7 @@ rotation = 0.3708913
 loop = false
 
 [node name="Bonnie" parent="Zipline/ZiplinePoint" node_paths=PackedStringArray("camera") instance=ExtResource("7_pdet0")]
-position = Vector2(-3522.4597, 1277.5712)
+position = Vector2(-3522.0974, 1278.5034)
 rotation = -0.3708913
 camera = NodePath("../../../Camera2D")
 
