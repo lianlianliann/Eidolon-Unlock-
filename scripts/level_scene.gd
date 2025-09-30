@@ -20,6 +20,9 @@ func _on_zipline_area_body_entered(_body: Node2D) -> void:
 	var length = path_points[0].distance_to(path_points[-1])
 
 	var start_pos = _body.global_position - (zipline.global_position + path_points[0])
+	
+	if _body.get_parent() is PathFollow2D:
+		return
 
 	point.progress_ratio = start_pos.x / length
 	_body.global_position = point.global_position + Vector2(0, 20.0)

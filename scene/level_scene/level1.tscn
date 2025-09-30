@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ca4piba87hldo" path="res://scene/level_scene/level2-city.tscn" id="2_0frn7"]
 [ext_resource type="Texture2D" uid="uid://dnd4f82nraqwd" path="res://assets/platforms/level1/lv1_p2.png" id="2_dopym"]
 [ext_resource type="Texture2D" uid="uid://dw1a42vsschyc" path="res://assets/background/roof/eidlon.png" id="3_1ue5w"]
-[ext_resource type="PackedScene" uid="uid://bep6r7uxh75gg" path="res://scene/finish_line.tscn" id="3_ldfgt"]
+[ext_resource type="PackedScene" uid="uid://bpce7vh0fno8a" path="res://scene/finish_line.tscn" id="3_ldfgt"]
 [ext_resource type="Texture2D" uid="uid://j7m76gwam62w" path="res://assets/background/roof/2.png" id="4_s676v"]
 [ext_resource type="Texture2D" uid="uid://bj0tebnwp5oe8" path="res://assets/background/roof/3.png" id="5_p1rmk"]
 [ext_resource type="Texture2D" uid="uid://7n5ncmy3nxn" path="res://assets/background/roof/4.png" id="6_iypo8"]
@@ -14,10 +14,10 @@
 [ext_resource type="Resource" uid="uid://d2c63rwnti8m7" path="res://scene/characters/player_input_actions.tres" id="9_1k30x"]
 [ext_resource type="PackedScene" uid="uid://cckds7drxy0dw" path="res://scene/pushable_box.tscn" id="10_jw1ra"]
 [ext_resource type="PackedScene" path="res://scene/characters/clyde.tscn" id="13_2l5cw"]
-[ext_resource type="PackedScene" uid="uid://ckfc7r8o6smuy" path="res://scene/bg_sound.tscn" id="13_541h4"]
-[ext_resource type="PackedScene" uid="uid://djy8wyqpxxswa" path="res://scene/killzone.tscn" id="14_541h4"]
+[ext_resource type="PackedScene" uid="uid://doggiu7bv6aos" path="res://scene/bg_sound.tscn" id="13_541h4"]
+[ext_resource type="PackedScene" uid="uid://cvwmt1nh8am1a" path="res://scene/killzone.tscn" id="14_541h4"]
 [ext_resource type="Texture2D" uid="uid://j2owmbg8ojfr" path="res://assets/platforms/ladder.png" id="14_ndvtf"]
-[ext_resource type="PackedScene" uid="uid://bqomhgu5tjoqo" path="res://scene/transition_screen.tscn" id="15_e3d3u"]
+[ext_resource type="PackedScene" uid="uid://bcdtac7v678pw" path="res://scene/transition_screen.tscn" id="15_e3d3u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dopym"]
 size = Vector2(181, 252)
@@ -242,7 +242,7 @@ b = Vector2(78, 8)
 
 [node name="Lv1" type="Node2D" node_paths=PackedStringArray("player", "transition_screen", "zipline")]
 script = ExtResource("1_1k30x")
-player = NodePath("Zipline/ZiplinePoint/Bonnie")
+player = NodePath("Bonnie")
 transition_screen = NodePath("TransitionScreen")
 next_level_scene = ExtResource("2_0frn7")
 zipline = NodePath("Zipline")
@@ -642,7 +642,7 @@ debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
 
 [node name="PlayerInput" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("8_jw1ra")
-player = NodePath("../Zipline/ZiplinePoint/Bonnie")
+player = NodePath("../Bonnie")
 actions = ExtResource("9_1k30x")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -671,16 +671,6 @@ curve = SubResource("Curve2D_jw1ra")
 position = Vector2(3062, -59)
 rotation = 0.3708913
 loop = false
-
-[node name="Bonnie" parent="Zipline/ZiplinePoint" node_paths=PackedStringArray("spawn_point", "camera") instance=ExtResource("7_pdet0")]
-position = Vector2(-140.05981, 42.66516)
-rotation = -0.3708913
-spawn_point = NodePath("../../../SpawnPoint")
-camera = NodePath("../../../Camera2D")
-spawn_at_start = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Zipline/ZiplinePoint/Bonnie"]
-remote_path = NodePath("../../../../Camera2D")
 
 [node name="ZiplineArea" type="Area2D" parent="Zipline"]
 position = Vector2(3063, -60)
@@ -740,13 +730,21 @@ position = Vector2(-640, -138)
 [node name="Killzone" parent="." node_paths=PackedStringArray("transition_screen", "player", "spawn_point") instance=ExtResource("14_541h4")]
 position = Vector2(-490, 260)
 transition_screen = NodePath("../TransitionScreen")
-player = NodePath("../Zipline/ZiplinePoint/Bonnie")
+player = NodePath("../Bonnie")
 spawn_point = NodePath("../SpawnPoint")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(-684, -144)
 
 [node name="TransitionScreen" parent="." instance=ExtResource("15_e3d3u")]
+
+[node name="Bonnie" parent="." node_paths=PackedStringArray("spawn_point", "camera") instance=ExtResource("7_pdet0")]
+position = Vector2(2915.9998, -70.00003)
+spawn_point = NodePath("../SpawnPoint")
+camera = NodePath("../Camera2D")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bonnie"]
+remote_path = NodePath("../../Camera2D")
 
 [connection signal="body_entered" from="FinishLine" to="." method="_on_finish_line_body_entered"]
 [connection signal="body_entered" from="Ladders" to="." method="_on_ladders_body_entered"]

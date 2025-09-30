@@ -66,6 +66,7 @@ func _try_zipline(delta: float) -> bool:
 	if not parent is PathFollow2D:
 		return false
 
+	print(parent.progress_ratio)
 	if parent.progress_ratio < 1.0:
 		return _advance_on_zipline(parent, delta)
 
