@@ -1,11 +1,24 @@
-[gd_scene load_steps=53 format=3 uid="uid://rwjc6vbbj4ia"]
+[gd_scene load_steps=89 format=3 uid="uid://rwjc6vbbj4ia"]
 
-[ext_resource type="Texture2D" uid="uid://dm82akmekw4up" path="res://assets/platforms/lv1_p1.png" id="1_jwv3a"]
-[ext_resource type="Texture2D" uid="uid://dnd4f82nraqwd" path="res://assets/platforms/lv1_p2.png" id="2_dopym"]
+[ext_resource type="Script" uid="uid://dovly1rei0j8n" path="res://scripts/level_scene.gd" id="1_1k30x"]
+[ext_resource type="Texture2D" uid="uid://dm82akmekw4up" path="res://assets/platforms/level1/lv1_p1.png" id="1_jwv3a"]
+[ext_resource type="Texture2D" uid="uid://dnd4f82nraqwd" path="res://assets/platforms/level1/lv1_p2.png" id="2_dopym"]
 [ext_resource type="Texture2D" uid="uid://dw1a42vsschyc" path="res://assets/background/roof/eidlon.png" id="3_1ue5w"]
+[ext_resource type="PackedScene" uid="uid://bep6r7uxh75gg" path="res://scene/finish_line.tscn" id="3_ldfgt"]
 [ext_resource type="Texture2D" uid="uid://j7m76gwam62w" path="res://assets/background/roof/2.png" id="4_s676v"]
 [ext_resource type="Texture2D" uid="uid://bj0tebnwp5oe8" path="res://assets/background/roof/3.png" id="5_p1rmk"]
 [ext_resource type="Texture2D" uid="uid://7n5ncmy3nxn" path="res://assets/background/roof/4.png" id="6_iypo8"]
+[ext_resource type="PackedScene" uid="uid://ciurmjgcl7fvc" path="res://scene/characters/bonnie.tscn" id="7_pdet0"]
+[ext_resource type="Script" uid="uid://bk8relen5afv3" path="res://scripts/characters/player/player_input.gd" id="8_jw1ra"]
+[ext_resource type="Resource" uid="uid://d2c63rwnti8m7" path="res://scene/characters/player_input_actions.tres" id="9_1k30x"]
+[ext_resource type="PackedScene" uid="uid://cckds7drxy0dw" path="res://scene/pushable_box.tscn" id="10_jw1ra"]
+[ext_resource type="PackedScene" uid="uid://ccxky50rx23hd" path="res://scene/characters/clyde.tscn" id="13_2l5cw"]
+[ext_resource type="PackedScene" uid="uid://ckfc7r8o6smuy" path="res://scene/bg_sound.tscn" id="13_541h4"]
+[ext_resource type="PackedScene" uid="uid://djy8wyqpxxswa" path="res://scene/killzone.tscn" id="14_541h4"]
+[ext_resource type="Texture2D" uid="uid://j2owmbg8ojfr" path="res://assets/platforms/ladder.png" id="14_ndvtf"]
+[ext_resource type="PackedScene" uid="uid://bqomhgu5tjoqo" path="res://scene/transition_screen.tscn" id="15_e3d3u"]
+[ext_resource type="PackedScene" uid="uid://2q41fgk1fm2h" path="res://scene/small_chat_bubble.tscn" id="15_kk0l2"]
+[ext_resource type="AudioStream" uid="uid://dk3ex1n2tv2cf" path="res://assets/sounds/oknotokbonnie.wav" id="17_d811u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dopym"]
 size = Vector2(181, 252)
@@ -14,13 +27,13 @@ size = Vector2(181, 252)
 size = Vector2(156, 234)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v38iq"]
-size = Vector2(129, 157)
+size = Vector2(134, 157)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwv3a"]
 size = Vector2(239, 180)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8kj3"]
-size = Vector2(111.5, 200)
+size = Vector2(110.5, 200)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_crycw"]
 size = Vector2(226, 48)
@@ -115,11 +128,11 @@ a = Vector2(36, 2)
 b = Vector2(-26, 20)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_dopym"]
-a = Vector2(-16, 2)
-b = Vector2(-52, 2)
+a = Vector2(-15, 1)
+b = Vector2(-49, 2)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_rjtee"]
-a = Vector2(24, 4)
+a = Vector2(21, 4)
 b = Vector2(-16, 30)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_beq0j"]
@@ -142,7 +155,7 @@ size = Vector2(520.8125, 207.125)
 size = Vector2(30.601563, 14.78125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52iny"]
-size = Vector2(301.30078, 23.390625)
+size = Vector2(301.30078, 29.390625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxqqj"]
 size = Vector2(80.65039, 17.695313)
@@ -156,7 +169,87 @@ size = Vector2(22, 22.847656)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5le63"]
 size = Vector2(230.20313, 161.78125)
 
-[node name="Lv1" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1rmk"]
+size = Vector2(6.5, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdet0"]
+size = Vector2(9, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jw1ra"]
+size = Vector2(7, 25.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1k30x"]
+size = Vector2(6.5, 72.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkafg"]
+size = Vector2(8, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2l5cw"]
+size = Vector2(8, 75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_541h4"]
+size = Vector2(7.5, 3.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3d3u"]
+size = Vector2(10, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldfgt"]
+size = Vector2(7.5, 3.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0frn7"]
+size = Vector2(7.75, 2.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndvtf"]
+size = Vector2(7.5, 1.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kk0l2"]
+size = Vector2(7.5, 2.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d811u"]
+size = Vector2(7.5, 3.5)
+
+[sub_resource type="Curve2D" id="Curve2D_jw1ra"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3062, -59, 0, 0, 0, 0, 3080, -52, 0, 0, 0, 0, 3100, -44, 0, 0, 0, 0, 3121, -39, 0, 0, 0, 0, 3156, -30, 0, 0, 0, 0, 3199, -21, 0, 0, 0, 0, 3225, -15, 0, 0, 0, 0, 3295, -4, 0, 0, 0, 0, 3398, 11, 0, 0, 0, 0, 3465, 21, 0, 0, 0, 0, 3566, 33, 0, 0, 0, 0, 3639, 41, 0, 0, 0, 0, 3703, 48, 0, 0, 0, 0, 3760, 55, 0, 0, 0, 0, 3801, 58, 0, 0, 0, 0, 3829, 61, 0, 0, 0, 0, 3829, 61, 0, 0, 0, 0, 3853, 63, 0, 0, 0, 0, 3876, 66, 0, 0, 0, 0, 3888, 66, 0, 0, 0, 0, 3892, 67)
+}
+point_count = 21
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1k30x"]
+b = Vector2(30, 12)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jw1ra"]
+b = Vector2(60, 16)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pkafg"]
+b = Vector2(90, 19)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2l5cw"]
+b = Vector2(103, 17)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_541h4"]
+b = Vector2(109, 16)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_e3d3u"]
+b = Vector2(115, 14)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ldfgt"]
+b = Vector2(124, 14)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ndvtf"]
+b = Vector2(128, 13)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_0frn7"]
+b = Vector2(78, 8)
+
+[node name="Lv1" type="Node2D" node_paths=PackedStringArray("player", "transition_screen", "zipline")]
+script = ExtResource("1_1k30x")
+player = NodePath("Bonnie")
+transition_screen = NodePath("TransitionScreen")
+next_level_scene = &"res://scene/level_scene/level2-city.tscn"
+zipline = NodePath("Zipline")
+
+[node name="FinishLine" parent="." instance=ExtResource("3_ldfgt")]
+position = Vector2(3952, 26)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -165,6 +258,7 @@ position = Vector2(-1635, -734)
 motion_mirroring = Vector2(1920, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Backdrop"]
+position = Vector2(-51, 4)
 texture = ExtResource("3_1ue5w")
 centered = false
 
@@ -198,6 +292,12 @@ scale = Vector2(0.29202127, 0.3101273)
 texture = ExtResource("6_iypo8")
 centered = false
 
+[node name="Ladder" type="Sprite2D" parent="."]
+position = Vector2(237.771, 4.1208496)
+rotation = -3.140511
+scale = Vector2(0.45394063, -0.53633136)
+texture = ExtResource("14_ndvtf")
+
 [node name="lvl1_p1" type="Sprite2D" parent="."]
 position = Vector2(844, 19)
 texture = ExtResource("1_jwv3a")
@@ -217,7 +317,7 @@ position = Vector2(-398, 11)
 shape = SubResource("RectangleShape2D_ootpb")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="part1_collision"]
-position = Vector2(-256.5, 44.5)
+position = Vector2(-254, 44.5)
 shape = SubResource("RectangleShape2D_v38iq")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="part1_collision"]
@@ -225,7 +325,7 @@ position = Vector2(-61.5, 36)
 shape = SubResource("RectangleShape2D_jwv3a")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="part1_collision"]
-position = Vector2(296.25, 26)
+position = Vector2(295.75, 26)
 shape = SubResource("RectangleShape2D_v8kj3")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="part1_collision"]
@@ -429,7 +529,7 @@ position = Vector2(-644.3008, 52.609375)
 shape = SubResource("RectangleShape2D_uuy0h")
 
 [node name="CollisionShape2D32" type="CollisionShape2D" parent="part2_collision"]
-position = Vector2(44.34961, 1.3046875)
+position = Vector2(44.34961, 4.3046875)
 shape = SubResource("RectangleShape2D_52iny")
 
 [node name="CollisionShape2D33" type="CollisionShape2D" parent="part2_collision"]
@@ -451,3 +551,213 @@ shape = SubResource("RectangleShape2D_5le63")
 [node name="CollisionShape2D30" type="CollisionShape2D" parent="part2_collision"]
 position = Vector2(79.203125, 158.21875)
 shape = SubResource("RectangleShape2D_5le63")
+
+[node name="Ladders" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 128
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladders"]
+position = Vector2(237.75, -7)
+shape = SubResource("RectangleShape2D_p1rmk")
+debug_color = Color(0.10840901, 0.6259402, 0.48372048, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ladders"]
+position = Vector2(355.5, -33.5)
+shape = SubResource("RectangleShape2D_pdet0")
+debug_color = Color(0.10840901, 0.6259402, 0.48372048, 0.41960785)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Ladders"]
+position = Vector2(570.5, -19.5)
+shape = SubResource("RectangleShape2D_jw1ra")
+debug_color = Color(0.10840901, 0.6259402, 0.48372048, 0.41960785)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Ladders"]
+position = Vector2(1250, -60.25)
+shape = SubResource("RectangleShape2D_jw1ra")
+debug_color = Color(0.10840901, 0.6259402, 0.48372048, 0.41960785)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Ladders"]
+position = Vector2(1687.75, -76.375)
+shape = SubResource("RectangleShape2D_1k30x")
+debug_color = Color(0.10840901, 0.6259402, 0.48372048, 0.41960785)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Ladders"]
+position = Vector2(2600, 61)
+shape = SubResource("RectangleShape2D_pkafg")
+debug_color = Color(0.10840901, 0.6259402, 0.48372048, 0.41960785)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Ladders"]
+position = Vector2(3078, 45.5)
+shape = SubResource("RectangleShape2D_2l5cw")
+debug_color = Color(0.10840901, 0.6259402, 0.48372048, 0.41960785)
+
+[node name="LadderPlatforms" type="StaticBody2D" parent="."]
+position = Vector2(237.75, -57.5)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderPlatforms"]
+position = Vector2(0, -0.75)
+shape = SubResource("RectangleShape2D_541h4")
+one_way_collision = true
+debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LadderPlatforms"]
+position = Vector2(117.25, -13)
+shape = SubResource("RectangleShape2D_e3d3u")
+one_way_collision = true
+debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="LadderPlatforms"]
+position = Vector2(333, 23.25)
+shape = SubResource("RectangleShape2D_ldfgt")
+one_way_collision = true
+debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="LadderPlatforms"]
+position = Vector2(1012.375, -17.25)
+shape = SubResource("RectangleShape2D_0frn7")
+one_way_collision = true
+debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="LadderPlatforms"]
+position = Vector2(1450.25, -55.75)
+shape = SubResource("RectangleShape2D_ndvtf")
+one_way_collision = true
+debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="LadderPlatforms"]
+position = Vector2(2362.25, 48.75)
+shape = SubResource("RectangleShape2D_kk0l2")
+one_way_collision = true
+debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="LadderPlatforms"]
+position = Vector2(2840.25, 63.25)
+shape = SubResource("RectangleShape2D_d811u")
+one_way_collision = true
+debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
+
+[node name="PlayerInput" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("8_jw1ra")
+player = NodePath("../Bonnie")
+actions = ExtResource("9_1k30x")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2915.9998, -70.00003)
+zoom = Vector2(3, 3)
+
+[node name="PushableBox" parent="." instance=ExtResource("10_jw1ra")]
+position = Vector2(401, 57)
+
+[node name="PushableBox2" parent="." instance=ExtResource("10_jw1ra")]
+position = Vector2(969, -65)
+
+[node name="PushableBox3" parent="." instance=ExtResource("10_jw1ra")]
+position = Vector2(1931, 55)
+
+[node name="PushableBox4" parent="." instance=ExtResource("10_jw1ra")]
+position = Vector2(2126, -10)
+
+[node name="PushableBox5" parent="." instance=ExtResource("10_jw1ra")]
+position = Vector2(2936, 150)
+
+[node name="Zipline" type="Path2D" parent="."]
+curve = SubResource("Curve2D_jw1ra")
+
+[node name="ZiplinePoint" type="PathFollow2D" parent="Zipline"]
+position = Vector2(3062, -59)
+rotation = 0.3708913
+loop = false
+
+[node name="ZiplineArea" type="Area2D" parent="Zipline"]
+position = Vector2(3063, -60)
+collision_layer = 8
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zipline/ZiplineArea"]
+position = Vector2(-1, 1)
+shape = SubResource("SegmentShape2D_1k30x")
+debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Zipline/ZiplineArea"]
+position = Vector2(29, 13)
+shape = SubResource("SegmentShape2D_jw1ra")
+debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Zipline/ZiplineArea"]
+position = Vector2(90, 29)
+shape = SubResource("SegmentShape2D_pkafg")
+debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Zipline/ZiplineArea"]
+position = Vector2(180, 48)
+shape = SubResource("SegmentShape2D_2l5cw")
+debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Zipline/ZiplineArea"]
+position = Vector2(282, 64)
+shape = SubResource("SegmentShape2D_541h4")
+debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Zipline/ZiplineArea"]
+position = Vector2(390, 80)
+shape = SubResource("SegmentShape2D_e3d3u")
+debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Zipline/ZiplineArea"]
+position = Vector2(504, 94)
+shape = SubResource("SegmentShape2D_ldfgt")
+debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Zipline/ZiplineArea"]
+position = Vector2(625, 107)
+shape = SubResource("SegmentShape2D_ndvtf")
+debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Zipline/ZiplineArea"]
+position = Vector2(750, 119)
+shape = SubResource("SegmentShape2D_0frn7")
+debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
+
+[node name="Clyde" parent="." instance=ExtResource("13_2l5cw")]
+position = Vector2(-560, -142)
+
+[node name="SmallChatBubble" parent="Clyde" instance=ExtResource("15_kk0l2")]
+position = Vector2(0, -14)
+
+[node name="Label" type="Label" parent="Clyde/SmallChatBubble"]
+offset_left = -8.0
+offset_top = -12.0
+offset_right = 8.0
+offset_bottom = 11.0
+
+[node name="BgSound" parent="." instance=ExtResource("13_541h4")]
+stream = ExtResource("17_d811u")
+
+[node name="Killzone" parent="." node_paths=PackedStringArray("transition_screen", "player", "spawn_point") instance=ExtResource("14_541h4")]
+position = Vector2(-490, 260)
+transition_screen = NodePath("../TransitionScreen")
+player = NodePath("../Bonnie")
+spawn_point = NodePath("../SpawnPoint")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-684, -144)
+
+[node name="TransitionScreen" parent="." instance=ExtResource("15_e3d3u")]
+
+[node name="Bonnie" parent="." node_paths=PackedStringArray("spawn_point", "camera") instance=ExtResource("7_pdet0")]
+position = Vector2(2915.9998, -70.00003)
+spawn_point = NodePath("../SpawnPoint")
+camera = NodePath("../Camera2D")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bonnie"]
+remote_path = NodePath("../../Camera2D")
+
+[connection signal="body_entered" from="FinishLine" to="." method="_on_finish_line_body_entered"]
+[connection signal="body_entered" from="Ladders" to="." method="_on_ladders_body_entered"]
+[connection signal="body_exited" from="Ladders" to="." method="_on_ladders_body_exited"]
+[connection signal="body_entered" from="Zipline/ZiplineArea" to="." method="_on_zipline_area_body_entered"]

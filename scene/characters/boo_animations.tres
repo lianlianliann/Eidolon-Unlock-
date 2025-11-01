@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterAnimations2D" load_steps=2 format=3 uid="uid://ctfvw16d0wogr"]
+
+[ext_resource type="Script" uid="uid://cpoh8svqwqtrx" path="res://scripts/characters/character_animations_2d.gd" id="1_lsijx"]
+
+[resource]
+script = ExtResource("1_lsijx")
+idle_2 = &"idle_1"
+fall = &"idle_1"
+climb = &"idle_1"
+interact = &"idle_1"
+metadata/_custom_type_script = "uid://cpoh8svqwqtrx"
