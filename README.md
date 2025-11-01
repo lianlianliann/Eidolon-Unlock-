@@ -3,10 +3,10 @@
 ![EIDOLON-Cover](./assets/game-figures/EIDOLON-Cover-PPT.PNG)
 
 #### Team Members:
-👨‍🎨 Project Lead, Graphics – Ed Marcel Godinez Lasco
-🎶 Graphics & Music Designer – Lian Ventura
-📝 Pitching, Programmer, Documentation – John Benedict Binas
-💻 Main Programmer – Kenneth Daroy Pabillo
+- 👨‍🎨 Project Lead, Graphics – Ed Marcel Godinez Lasco
+- 🎶 Graphics & Music Designer – Lian Ventura
+- 📝 Pitching, Programmer, Documentation – John Benedict Binas
+- 💻 Main Programmer – Kenneth Daroy Pabillo
 
 ___
 
