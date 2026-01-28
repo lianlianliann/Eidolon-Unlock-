@@ -4,7 +4,7 @@
 
 #### Team Members:
 - 👨‍🎨 Project Lead, Graphics – Ed Marcel Godinez Lasco
-- 🎶 Graphics & Music Designer – Lian Ventura
+- 🎶 Graphics & Music Designer – Lian Luigi Paredes
 - 📝 Pitching, Programmer, Documentation – John Benedict Binas
 - 💻 Main Programmer – Kenneth Daroy Pabillo
 
